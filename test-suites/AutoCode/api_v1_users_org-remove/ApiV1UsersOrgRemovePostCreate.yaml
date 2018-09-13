@@ -19,10 +19,10 @@ testCases:
     \n  'org' : {\r\n    'createdBy' : null,\r\n    'createdDate' : null,\r\n    'id'\
     \ : null,\r\n    'inactive' : null,\r\n    'modifiedBy' : null,\r\n    'modifiedDate'\
     \ : null,\r\n    'name' : null,\r\n    'version' : null\r\n  },\r\n  'orgRole'\
-    \ : 'ENTERPRISE_ADMIN',\r\n  'status' : 'DECLINED',\r\n  'users' : {\r\n    'company'\
-    \ : null,\r\n    'createdBy' : null,\r\n    'createdDate' : null,\r\n    'email'\
-    \ : null,\r\n    'id' : null,\r\n    'inactive' : null,\r\n    'jobTitle' : null,\r\
-    \n    'location' : null,\r\n    'modifiedBy' : null,\r\n    'modifiedDate' : null,\r\
+    \ : 'READ',\r\n  'status' : 'INACTIVE',\r\n  'users' : {\r\n    'company' : null,\r\
+    \n    'createdBy' : null,\r\n    'createdDate' : null,\r\n    'email' : null,\r\
+    \n    'id' : null,\r\n    'inactive' : null,\r\n    'jobTitle' : null,\r\n   \
+    \ 'location' : null,\r\n    'modifiedBy' : null,\r\n    'modifiedDate' : null,\r\
     \n    'name' : null,\r\n    'username' : null,\r\n    'version' : null\r\n  },\r\
     \n  'version' : null\r\n}"
   inactive: false

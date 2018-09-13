@@ -14,7 +14,7 @@ headers:
 - "Content-Type: application/json"
 testCases:
 - id: 1
-  body: "{\r\n  'accessKey' : null,\r\n  'accountType' : 'Email',\r\n  'allowedRegions'\
+  body: "{\r\n  'accessKey' : null,\r\n  'accountType' : 'AWS',\r\n  'allowedRegions'\
     \ : [ ],\r\n  'createdBy' : null,\r\n  'createdDate' : null,\r\n  'id' : null,\r\
     \n  'inactive' : null,\r\n  'modifiedBy' : null,\r\n  'modifiedDate' : null,\r\
     \n  'name' : null,\r\n  'org' : {\r\n    'createdBy' : null,\r\n    'createdDate'\
