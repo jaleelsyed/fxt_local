@@ -22,7 +22,7 @@ testCases:
     \ null,\r\n    'modifiedBy' : null,\r\n    'modifiedDate' : null,\r\n    'name'\
     \ : null,\r\n    'version' : null\r\n  },\r\n  'prop1' : null,\r\n  'prop2' :\
     \ null,\r\n  'prop3' : null,\r\n  'prop4' : null,\r\n  'prop5' : null,\r\n  'secretKey'\
-    \ : null,\r\n  'skillType' : 'BOT_DEPLOYMENT',\r\n  'version' : null\r\n}"
+    \ : null,\r\n  'skillType' : 'ISSUE_TRACKER',\r\n  'version' : null\r\n}"
   inactive: false
 assertions:
 - "@StatusCode != 200"

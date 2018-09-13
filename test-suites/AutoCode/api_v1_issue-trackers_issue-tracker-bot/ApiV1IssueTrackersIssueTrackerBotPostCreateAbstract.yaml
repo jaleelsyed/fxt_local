@@ -32,7 +32,7 @@ testCases:
     \n  'prop4' : null,\r\n  'prop5' : null,\r\n  'skill' : {\r\n    'createdBy' :\
     \ null,\r\n    'createdDate' : null,\r\n    'id' : null,\r\n    'inactive' : null,\r\
     \n    'modifiedBy' : null,\r\n    'modifiedDate' : null,\r\n    'name' : null,\r\
-    \n    'version' : null\r\n  },\r\n  'state' : 'ACTIVE',\r\n  'version' : null,\r\
+    \n    'version' : null\r\n  },\r\n  'state' : 'DELETING',\r\n  'version' : null,\r\
     \n  'visibility' : 'PRIVATE'\r\n}"
   inactive: false
 assertions:
