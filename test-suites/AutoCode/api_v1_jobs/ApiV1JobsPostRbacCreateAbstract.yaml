@@ -22,9 +22,9 @@ testCases:
     \n    'modifiedDate' : null,\r\n    'name' : null,\r\n    'projectId' : null,\r\
     \n    'refId' : null,\r\n    'version' : null\r\n  },\r\n  'id' : null,\r\n  'inactive'\
     \ : null,\r\n  'issueTracker' : {\r\n    'account' : null,\r\n    'accountType'\
-    \ : 'Self_Hosted',\r\n    'id' : null,\r\n    'name' : null,\r\n    'projectKey'\
-    \ : null,\r\n    'url' : null\r\n  },\r\n  'issueTrackerToDo' : null,\r\n  'modifiedBy'\
-    \ : null,\r\n  'modifiedDate' : null,\r\n  'name' : null,\r\n  'nextFire' : null,\r\
+    \ : 'Slack',\r\n    'id' : null,\r\n    'name' : null,\r\n    'projectKey' : null,\r\
+    \n    'url' : null\r\n  },\r\n  'issueTrackerToDo' : null,\r\n  'modifiedBy' :\
+    \ null,\r\n  'modifiedDate' : null,\r\n  'name' : null,\r\n  'nextFire' : null,\r\
     \n  'notificationToDo' : null,\r\n  'notifications' : [ ],\r\n  'openIssues' :\
     \ null,\r\n  'project' : {\r\n    'createdBy' : null,\r\n    'createdDate' : null,\r\
     \n    'id' : null,\r\n    'inactive' : null,\r\n    'modifiedBy' : null,\r\n \

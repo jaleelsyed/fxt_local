@@ -14,7 +14,7 @@ headers:
 - "Content-Type: application/json"
 testCases:
 - id: 1
-  body: "{\r\n  'account' : {\r\n    'accessKey' : null,\r\n    'accountType' : 'Self_Hosted',\r\
+  body: "{\r\n  'account' : {\r\n    'accessKey' : null,\r\n    'accountType' : 'AWS',\r\
     \n    'allowedRegions' : [ ],\r\n    'createdBy' : null,\r\n    'createdDate'\
     \ : null,\r\n    'id' : null,\r\n    'inactive' : null,\r\n    'modifiedBy' :\
     \ null,\r\n    'modifiedDate' : null,\r\n    'name' : null,\r\n    'org' : {\r\
@@ -32,8 +32,8 @@ testCases:
     \n  'prop4' : null,\r\n  'prop5' : null,\r\n  'skill' : {\r\n    'createdBy' :\
     \ null,\r\n    'createdDate' : null,\r\n    'id' : null,\r\n    'inactive' : null,\r\
     \n    'modifiedBy' : null,\r\n    'modifiedDate' : null,\r\n    'name' : null,\r\
-    \n    'version' : null\r\n  },\r\n  'state' : 'DELETED',\r\n  'version' : null,\r\
-    \n  'visibility' : 'ORG_PUBLIC'\r\n}"
+    \n    'version' : null\r\n  },\r\n  'state' : 'ACTIVE',\r\n  'version' : null,\r\
+    \n  'visibility' : 'PRIVATE'\r\n}"
   inactive: false
 assertions:
 - "@StatusCode != 200"

@@ -22,8 +22,8 @@ testCases:
     \n      'inactive' : null,\r\n      'modifiedBy' : null,\r\n      'modifiedDate'\
     \ : null,\r\n      'name' : null,\r\n      'version' : null\r\n    },\r\n    'prop1'\
     \ : null,\r\n    'prop2' : null,\r\n    'prop3' : null,\r\n    'region' : null,\r\
-    \n    'secretKey' : null,\r\n    'version' : null\r\n  },\r\n  'cloudType' : 'DIGITAL_OCEAN',\r\
-    \n  'createdBy' : null,\r\n  'createdDate' : null,\r\n  'driver' : 'MANUAL',\r\
+    \n    'secretKey' : null,\r\n    'version' : null\r\n  },\r\n  'cloudType' : 'GCP',\r\
+    \n  'createdBy' : null,\r\n  'createdDate' : null,\r\n  'driver' : 'KUBERNETES',\r\
     \n  'id' : null,\r\n  'inactive' : null,\r\n  'key' : null,\r\n  'live' : null,\r\
     \n  'manual' : null,\r\n  'manualScript' : null,\r\n  'max' : null,\r\n  'min'\
     \ : null,\r\n  'modifiedBy' : null,\r\n  'modifiedDate' : null,\r\n  'name' :\
@@ -31,7 +31,7 @@ testCases:
     \  'createdDate' : null,\r\n    'id' : null,\r\n    'inactive' : null,\r\n   \
     \ 'modifiedBy' : null,\r\n    'modifiedDate' : null,\r\n    'name' : null,\r\n\
     \    'version' : null\r\n  },\r\n  'region' : null,\r\n  'status' : 'DELETING',\r\
-    \n  'version' : null,\r\n  'visibility' : 'PUBLIC'\r\n}"
+    \n  'version' : null,\r\n  'visibility' : 'PRIVATE'\r\n}"
   inactive: false
 assertions:
 - "@StatusCode != 200"
