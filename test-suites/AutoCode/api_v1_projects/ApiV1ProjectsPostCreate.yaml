@@ -14,7 +14,7 @@ headers:
 - "Content-Type: application/json"
 testCases:
 - id: 1
-  body: "{\r\n  'account' : {\r\n    'accessKey' : null,\r\n    'accountType' : 'GitLab',\r\
+  body: "{\r\n  'account' : {\r\n    'accessKey' : null,\r\n    'accountType' : 'Self_Hosted',\r\
     \n    'allowedRegions' : [ ],\r\n    'createdBy' : null,\r\n    'createdDate'\
     \ : null,\r\n    'id' : null,\r\n    'inactive' : null,\r\n    'modifiedBy' :\
     \ null,\r\n    'modifiedDate' : null,\r\n    'name' : null,\r\n    'org' : {\r\
@@ -25,7 +25,7 @@ testCases:
     \n    'secretKey' : null,\r\n    'version' : null\r\n  },\r\n  'apiEndpoints'\
     \ : [ ],\r\n  'autoGenSuites' : null,\r\n  'branch' : null,\r\n  'createdBy' :\
     \ null,\r\n  'createdDate' : null,\r\n  'description' : null,\r\n  'genPolicy'\
-    \ : 'Create',\r\n  'id' : null,\r\n  'inactive' : null,\r\n  'lastCommit' : null,\r\
+    \ : 'None',\r\n  'id' : null,\r\n  'inactive' : null,\r\n  'lastCommit' : null,\r\
     \n  'lastSync' : null,\r\n  'licenses' : [ ],\r\n  'modifiedBy' : null,\r\n  'modifiedDate'\
     \ : null,\r\n  'name' : null,\r\n  'openAPISpec' : null,\r\n  'org' : {\r\n  \
     \  'createdBy' : null,\r\n    'createdDate' : null,\r\n    'id' : null,\r\n  \

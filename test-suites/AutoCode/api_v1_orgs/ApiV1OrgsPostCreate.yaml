@@ -17,8 +17,8 @@ testCases:
   body: "{\r\n  'billingEmail' : null,\r\n  'company' : null,\r\n  'createdBy' : null,\r\
     \n  'createdDate' : null,\r\n  'description' : null,\r\n  'id' : null,\r\n  'inactive'\
     \ : null,\r\n  'location' : null,\r\n  'modifiedBy' : null,\r\n  'modifiedDate'\
-    \ : null,\r\n  'name' : null,\r\n  'orgPlan' : 'TEAM',\r\n  'orgType' : 'TEAM',\r\
-    \n  'version' : null\r\n}"
+    \ : null,\r\n  'name' : null,\r\n  'orgPlan' : 'ENTERPRISE',\r\n  'orgType' :\
+    \ 'TEAM',\r\n  'version' : null\r\n}"
   inactive: false
 assertions:
 - "@StatusCode != 200"
