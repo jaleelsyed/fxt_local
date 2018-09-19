@@ -21,7 +21,7 @@ testCases:
     }"
   inactive: false
 assertions:
-- "@StatusCode == 200"
+- "@StatusCode != 200"
 
 cleanup: []
 severity: "Major"
