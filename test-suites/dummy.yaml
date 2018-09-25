@@ -9,7 +9,7 @@ name: dummy
 
 # Optional - one or more author names
 authors: 
-  - syed123
+  - syed12
   #- Developer 1
   #- Developer 2
 
@@ -50,7 +50,7 @@ testCases:
   - id: 2
     body: '{
         "name": "{{@Faker.fullname}}",
-        "description": "desc"
+        "description": "description"
      }'
 
 
