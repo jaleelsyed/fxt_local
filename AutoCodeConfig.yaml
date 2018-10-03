@@ -175,7 +175,7 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
 - type: "empty_value"
   assertions:
