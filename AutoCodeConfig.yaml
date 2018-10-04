@@ -118,16 +118,6 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
-- type: "XSS_Injection"
-  assertions:
-  - "@StatusCode != 200"
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  - "@StatusCode != 500"
-  severity: null
-  database: null
-  inactive: false
-  matches: []
 - type: "sql_injection_timebound"
   assertions:
   - "@ResponseTime > 7000"
@@ -137,6 +127,16 @@ generators:
   database:
     name: "MySQL"
     version: "5.7"
+  inactive: false
+  matches: []
+- type: "XSS_Injection"
+  assertions:
+  - "@StatusCode != 200"
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  - "@StatusCode != 500"
+  severity: null
+  database: null
   inactive: false
   matches: []
 - type: "log_Forging"
@@ -167,16 +167,6 @@ generators:
   database: null
   inactive: false
   matches: []
-- type: "null_value"
-  assertions:
-  - "@StatusCode != 200"
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  - "@StatusCode != 500"
-  severity: null
-  database: null
-  inactive: false
-  matches: []
 - type: "empty_value"
   assertions:
   - "@StatusCode != 200"
@@ -196,6 +186,16 @@ generators:
   inactive: false
   matches: []
 - type: "create"
+  assertions:
+  - "@StatusCode != 200"
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  - "@StatusCode != 500"
+  severity: null
+  database: null
+  inactive: false
+  matches: []
+- type: "null_value"
   assertions:
   - "@StatusCode != 200"
   - "@StatusCode != 401"
