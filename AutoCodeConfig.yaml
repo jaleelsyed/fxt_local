@@ -41,11 +41,11 @@ generators:
   matches:
   - name: null
     value: null
-    methods: "GET, GET, GET"
+    methods: "GET, GET, GET, GET"
     denyRoles: null
     allowRoles: null
     pathPatterns: "Get:/api/v1/user-signup/**, GET:/api/v1/bot-clusters, GET:/api/v1/bot-clusters/{id},\
-      \ GET:/api/v1/dashboard/issuetracker/{id}/issuetracker-savings"
+      \ GET:/api/v1/dashboard/issuetracker/{id}/issuetracker-savings, GET:/api/v1/orgs/{id}"
     resourceSamples: null
     queryParams: null
     bodyProperties: null
