@@ -1,12 +1,11 @@
 ---
 genPolicy: "Create"
-openAPISpec: "http://localhost:8090/v2/api-docs"
+openAPISpec: "C:\\Users\\hp\\Desktop\\Practice\\api-docs.json"
 generators:
 - type: "no_params"
   assertions:
   - "@StatusCode == 200"
-  tags:
-  - " OWASP - OTG-CONFIG-006"
+  tags: null
   severity: null
   database: null
   inactive: false
@@ -22,44 +21,34 @@ generators:
   matches:
   - name: null
     value: "1000"
-    methods: "Get, GET, GET, GET, GET"
+    methods: "Get"
     denyRoles: null
     allowRoles: null
-    pathPatterns: "/**, GET:/api/v1/runs/{id}, GET:/api/v1/notifications, GET:/api/v1/skills,\
-      \ GET:/api/v1/test-suites/project-id/{id}/coverage"
+    pathPatterns: "/**"
     resourceSamples: null
     queryParams: null
     bodyProperties: null
 - type: "anonymous_invalid"
   assertions:
   - "@StatusCode != 200"
-  tags:
-  - "OWASP - OTG-AUTHN-002"
+  tags: null
   severity: null
   database: null
   inactive: false
   matches:
   - name: null
     value: null
-    methods: "GET, GET, GET, GET"
+    methods: "Get"
     denyRoles: null
     allowRoles: null
-    pathPatterns: "Get:/api/v1/user-signup/**, GET:/api/v1/bot-clusters, GET:/api/v1/bot-clusters/{id},\
-      \ GET:/api/v1/dashboard/issuetracker/{id}/issuetracker-savings, GET:/api/v1/orgs/{id}"
+    pathPatterns: "/api/v1/user-signup/**"
     resourceSamples: null
     queryParams: null
     bodyProperties: null
 - type: "auth_invalid"
   assertions:
   - "@StatusCode != 200"
-  tags:
-  - "OWASP A2"
-  - "OWASP A5"
-  - "OWASP A6"
-  - "OWASP A7"
-  - "[PIC DSS 3.0] 6.5.8"
-  - "[PIC DSS 3.0] 6.5.10"
-  - "OTG-AUTHN-004"
+  tags: null
   severity: null
   database: null
   inactive: false
@@ -69,25 +58,58 @@ generators:
     methods: null
     denyRoles: null
     allowRoles: null
-    pathPatterns: "Get:/api/v1/user-signup/**"
+    pathPatterns: ""
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+- type: "auth_invalid_empty"
+  assertions:
+  - "@StatusCode == 401 OR @StatusCode == 403"
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches:
+  - name: null
+    value: null
+    methods: null
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: ""
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+- type: "auth_invalid_sql"
+  assertions:
+  - "@StatusCode == 401 OR @StatusCode == 403"
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches:
+  - name: null
+    value: null
+    methods: null
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: ""
     resourceSamples: null
     queryParams: null
     bodyProperties: null
 - type: "rbac"
   assertions:
   - "@StatusCode == 403"
-  tags:
-  - "OWASP - OTG-IDENT-001 "
+  tags: null
   severity: null
   database: null
   inactive: false
   matches:
   - name: "Admin access"
     value: null
-    methods: "Post, Put, Delete, DELETE"
+    methods: "Post, Put, Delete"
     denyRoles: "Writer, Reader"
-    allowRoles: null
-    pathPatterns: "/api/v1/orgs/**, /api/v1/accounts/**, DELETE:/api/v1/accounts/{id}"
+    allowRoles: "Admin"
+    pathPatterns: "/api/v1/orgs/**, /api/v1/accounts/**"
     resourceSamples: null
     queryParams: null
     bodyProperties: null
@@ -95,7 +117,7 @@ generators:
     value: null
     methods: "Post, Put, Delete"
     denyRoles: "Reader"
-    allowRoles: null
+    allowRoles: "Writer"
     pathPatterns: "/api/v1/projects/**, /api/v1/regions/**"
     resourceSamples: null
     queryParams: null
@@ -104,7 +126,7 @@ generators:
     value: null
     methods: "Post, Delete"
     denyRoles: "Collaborator"
-    allowRoles: null
+    allowRoles: "Reader, Writer"
     pathPatterns: "/api/v1/projects/**"
     resourceSamples: null
     queryParams: null
@@ -113,7 +135,7 @@ generators:
     value: null
     methods: "Get, Post, Put, Delete"
     denyRoles: "Other"
-    allowRoles: null
+    allowRoles: "Reader, Writer"
     pathPatterns: "/api/v1/**"
     resourceSamples: null
     queryParams: null
@@ -122,8 +144,7 @@ generators:
   assertions:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
-  tags:
-  - "[PCI DSS 3.0] 6.5.2"
+  tags: null
   severity: null
   database: null
   inactive: false
@@ -137,34 +158,26 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
-- type: "sql_injection_timebound"
-  assertions:
-  - "@ResponseTime > 7000"
-  - "@ResponseTime < 10000"
-  - "@StatusCode != 404"
-  tags:
-  - "OWASP A1"
-  - "[PCI DSS 3.0] 6.5.1"
-  - "OWASP - OTG-INPVAL-005"
-  severity: null
-  database:
-    name: "MySQL"
-    version: "5.7"
-  inactive: false
-  matches: []
 - type: "XSS_Injection"
   assertions:
   - "@StatusCode != 200"
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
-  tags:
-  - "OWASP A3"
-  - "[PIC DSS 3.0] 6.5.7"
-  - "OWASP - OTG-INPVAL-001"
-  - "OWASP - OTG-INPVAL-002"
+  tags: null
   severity: null
   database: null
+  inactive: false
+  matches: []
+- type: "sql_injection_timebound"
+  assertions:
+  - "@ResponseTime < 7000 OR @ResponseTime > 10000"
+  - "@StatusCode != 404"
+  tags: null
+  severity: null
+  database:
+    name: "MySQL"
+    version: "5.7"
   inactive: false
   matches: []
 - type: "log_Forging"
@@ -173,8 +186,7 @@ generators:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
-  tags:
-  - "OWASP - Log Injection"
+  tags: null
   severity: null
   database: null
   inactive: false
@@ -183,8 +195,7 @@ generators:
   assertions:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
+  tags: null
   severity: null
   database: null
   inactive: false
@@ -195,8 +206,18 @@ generators:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches: []
+- type: "null_value"
+  assertions:
+  - "@StatusCode != 200"
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  - "@StatusCode != 500"
+  tags: null
   severity: null
   database: null
   inactive: false
@@ -216,8 +237,7 @@ generators:
   assertions:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
+  tags: null
   severity: null
   database: null
   inactive: false
@@ -228,65 +248,8 @@ generators:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
-  tags:
-  - " OWASP - OTG-CONFIG-006"
+  tags: null
   severity: null
   database: null
   inactive: false
   matches: []
-- type: "null_value"
-  assertions:
-  - "@StatusCode != 200"
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  - "@StatusCode != 500"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
-  severity: null
-  database: null
-  inactive: false
-  matches: []
-- type: "auth_invalid_empty"
-  assertions:
-  - "@StatusCode == 401 OR @StatusCode == 403"
-  tags:
-  - "OWASP A2"
-  - "OWASP A5"
-  - "OWASP A6"
-  - "OWASP A7"
-  - "[PIC DSS 3.0] 6.5.8"
-  - "[PIC DSS 3.0] 6.5.10"
-  - "OTG-AUTHN-004"
-  severity: null
-  database: null
-  inactive: false
-  matches:
-  - name: null
-    value: null
-    methods: null
-    denyRoles: null
-    allowRoles: null
-    pathPatterns: ""
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
-- type: "auth_invalid_sql"
-  assertions:
-  - "@StatusCode == 401 OR @StatusCode == 403"
-  tags:
-  - "OWASP A1"
-  - "[PCI DSS 3.0] 6.5.1"
-  - "OTG-AUTHN-004"
-  severity: null
-  database: null
-  inactive: false
-  matches:
-  - name: null
-    value: null
-    methods: null
-    denyRoles: null
-    allowRoles: null
-    pathPatterns: ""
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
