@@ -1,6 +1,6 @@
 ---
 genPolicy: "Create"
-openAPISpec: "C:\\Users\\hp\\Desktop\\Practice\\api-docs.json"
+openAPISpec: "http://localhost:8090/v2/api-docs"
 generators:
 - type: "no_params"
   assertions:
@@ -10,6 +10,7 @@ generators:
   database: null
   inactive: false
   matches: []
+  authors: null
 - type: "sla"
   assertions:
   - "@StatusCode == 200"
@@ -21,13 +22,15 @@ generators:
   matches:
   - name: null
     value: "1000"
-    methods: "Get"
+    methods: "Get, GET, GET, GET, GET"
     denyRoles: null
     allowRoles: null
-    pathPatterns: "/**"
+    pathPatterns: "/**, GET:/api/v1/runs/{id}, GET:/api/v1/notifications, GET:/api/v1/skills,\
+      \ GET:/api/v1/test-suites/project-id/{id}/coverage"
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: null
 - type: "anonymous_invalid"
   assertions:
   - "@StatusCode != 200"
@@ -38,37 +41,44 @@ generators:
   matches:
   - name: null
     value: null
-    methods: "Get"
+    methods: "GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET"
     denyRoles: null
     allowRoles: null
-    pathPatterns: "/api/v1/user-signup/**"
+    pathPatterns: "Get:/api/v1/user-signup/**, GET:/api/v1/bot-clusters, GET:/api/v1/bot-clusters/{id},\
+      \ GET:/api/v1/dashboard/issuetracker/{id}/issuetracker-savings, GET:/api/v1/orgs/{id},\
+      \ GET:/api/v1/bot-clusters, GET:/api/v1/bot-clusters, GET:/api/v1/accounts/{id},\
+      \ GET:/api/v1/accounts, GET:/api/v1/accounts/{id}, GET:/api/v1/bot-clusters,\
+      \ GET:/api/v1/dashboard/count-bytes, GET:/api/v1/dashboard/count-bytes, GET:/api/v1/accounts,\
+      \ GET:/api/v1/accounts/search, GET:/api/v1/accounts/search"
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: null
 - type: "auth_invalid"
   assertions:
   - "@StatusCode != 200"
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
     methods: null
     denyRoles: null
     allowRoles: null
-    pathPatterns: ""
+    pathPatterns: "Get:/api/v1/user-signup/**"
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: null
 - type: "auth_invalid_empty"
   assertions:
   - "@StatusCode == 401 OR @StatusCode == 403"
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -79,6 +89,7 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: null
 - type: "auth_invalid_sql"
   assertions:
   - "@StatusCode == 401 OR @StatusCode == 403"
@@ -96,6 +107,7 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: null
 - type: "rbac"
   assertions:
   - "@StatusCode == 403"
@@ -106,10 +118,10 @@ generators:
   matches:
   - name: "Admin access"
     value: null
-    methods: "Post, Put, Delete"
+    methods: "Post, Put, Delete, DELETE"
     denyRoles: "Writer, Reader"
-    allowRoles: "Admin"
-    pathPatterns: "/api/v1/orgs/**, /api/v1/accounts/**"
+    allowRoles: null
+    pathPatterns: "/api/v1/orgs/**, /api/v1/accounts/**, DELETE:/api/v1/accounts/{id}"
     resourceSamples: null
     queryParams: null
     bodyProperties: null
@@ -117,7 +129,7 @@ generators:
     value: null
     methods: "Post, Put, Delete"
     denyRoles: "Reader"
-    allowRoles: "Writer"
+    allowRoles: null
     pathPatterns: "/api/v1/projects/**, /api/v1/regions/**"
     resourceSamples: null
     queryParams: null
@@ -126,7 +138,7 @@ generators:
     value: null
     methods: "Post, Delete"
     denyRoles: "Collaborator"
-    allowRoles: "Reader, Writer"
+    allowRoles: null
     pathPatterns: "/api/v1/projects/**"
     resourceSamples: null
     queryParams: null
@@ -135,11 +147,22 @@ generators:
     value: null
     methods: "Get, Post, Put, Delete"
     denyRoles: "Other"
-    allowRoles: "Reader, Writer"
+    allowRoles: null
     pathPatterns: "/api/v1/**"
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: null
+- type: "abac"
+  assertions:
+  - "Create:@StatusCode == 200 OR @StatusCode == 201"
+  - "Disallowed:@StatusCode == 401 OR @StatusCode == 403"
+  tags: null
+  severity: "Major"
+  database: null
+  inactive: true
+  matches: null
+  authors: ""
 - type: "DDOS"
   assertions:
   - "@StatusCode != 401"
@@ -158,6 +181,7 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
+  authors: null
 - type: "XSS_Injection"
   assertions:
   - "@StatusCode != 200"
@@ -169,17 +193,20 @@ generators:
   database: null
   inactive: false
   matches: []
+  authors: null
 - type: "sql_injection_timebound"
   assertions:
-  - "@ResponseTime < 7000 OR @ResponseTime > 10000"
+  - "@ResponseTime > 7000"
+  - "@ResponseTime < 10000"
   - "@StatusCode != 404"
   tags: null
   severity: null
   database:
     name: "MySQL"
     version: "5.7"
-  inactive: false
+  inactive: true
   matches: []
+  authors: null
 - type: "log_Forging"
   assertions:
   - "@StatusCode != 200"
@@ -189,8 +216,9 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
+  authors: null
 - type: "invalid_datatype"
   assertions:
   - "@StatusCode != 401"
@@ -198,8 +226,9 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
+  authors: null
 - type: "special_chars "
   assertions:
   - "@StatusCode != 200"
@@ -209,8 +238,9 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
+  authors: null
 - type: "null_value"
   assertions:
   - "@StatusCode != 200"
@@ -220,8 +250,9 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
+  authors: null
 - type: "empty_value"
   assertions:
   - "@StatusCode != 200"
@@ -231,8 +262,9 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
+  authors: null
 - type: "negative_number"
   assertions:
   - "@StatusCode != 401"
@@ -240,8 +272,9 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
+  authors: null
 - type: "create"
   assertions:
   - "@StatusCode != 200"
@@ -251,5 +284,24 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
+  authors: null
+- type: "customize"
+  assertions: []
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches:
+  - name: null
+    value: null
+    methods: null
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: null
+    resourceSamples: "Get:/api/v1/alerts[Accept=application/json,Content-Type=application/json]\n\
+      Post:/api/v1/accounts[Accept: application/json,Content-Type: application/json]"
+    queryParams: null
+    bodyProperties: null
+  authors: ""
