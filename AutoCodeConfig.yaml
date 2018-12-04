@@ -8,7 +8,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
   authors: null
 - type: "sla"
@@ -18,7 +18,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: "1000"
@@ -37,7 +37,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -96,7 +96,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -161,7 +161,7 @@ generators:
   severity: "Major"
   database: null
   inactive: true
-  matches: null
+  matches: []
   authors: ""
 - type: "DDOS"
   assertions:
@@ -170,7 +170,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: "pageSize, page_size, maxResults, max_results"
     value: null
@@ -191,7 +191,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
   authors: null
 - type: "sql_injection_timebound"
