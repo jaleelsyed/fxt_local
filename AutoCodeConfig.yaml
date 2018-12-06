@@ -6,19 +6,19 @@ generators:
   assertions:
   - "@StatusCode == 200"
   tags: null
-  severity: null
+  severity: "Minor"
   database: null
-  inactive: true
+  inactive: false
   matches: []
-  authors: null
+  authors: "jaleel"
 - type: "sla"
   assertions:
   - "@StatusCode == 200"
   - "@StatusCode != 404"
   tags: null
-  severity: null
+  severity: "Major"
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: null
     value: "1000"
@@ -35,9 +35,9 @@ generators:
   assertions:
   - "@StatusCode != 200"
   tags: null
-  severity: null
+  severity: "Critical"
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: null
     value: null
@@ -60,7 +60,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: null
     value: null
@@ -71,14 +71,14 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
-  authors: null
+  authors: "jaleel"
 - type: "auth_invalid_empty"
   assertions:
   - "@StatusCode == 401 OR @StatusCode == 403"
   tags: null
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: null
     value: null
@@ -89,14 +89,14 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
-  authors: null
+  authors: "jaleel"
 - type: "auth_invalid_sql"
   assertions:
   - "@StatusCode == 401 OR @StatusCode == 403"
   tags: null
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: null
     value: null
@@ -168,9 +168,9 @@ generators:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   tags: null
-  severity: null
+  severity: "Major"
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: "pageSize, page_size, maxResults, max_results"
     value: null
@@ -181,7 +181,7 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
-  authors: null
+  authors: "jaleel"
 - type: "XSS_Injection"
   assertions:
   - "@StatusCode != 200"
@@ -191,9 +191,9 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
-  authors: null
+  authors: "jaleel"
 - type: "sql_injection_timebound"
   assertions:
   - "@ResponseTime > 7000"
@@ -204,7 +204,7 @@ generators:
   database:
     name: "MySQL"
     version: "5.7"
-  inactive: true
+  inactive: false
   matches: []
   authors: null
 - type: "log_Forging"
@@ -216,7 +216,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
   authors: null
 - type: "invalid_datatype"
@@ -226,7 +226,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
   authors: null
 - type: "special_chars "
@@ -238,7 +238,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
   authors: null
 - type: "null_value"
@@ -250,7 +250,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
   authors: null
 - type: "empty_value"
@@ -262,7 +262,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
   authors: null
 - type: "negative_number"
@@ -272,19 +272,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: true
-  matches: []
-  authors: null
-- type: "create"
-  assertions:
-  - "@StatusCode != 200"
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  - "@StatusCode != 500"
-  tags: null
-  severity: null
-  database: null
-  inactive: true
+  inactive: false
   matches: []
   authors: null
 - type: "customize"
