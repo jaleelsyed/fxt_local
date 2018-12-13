@@ -2,18 +2,128 @@
 genPolicy: "Create"
 openAPISpec: "http://localhost:8090/v2/api-docs"
 generators:
+- type: "no_params"
+  assertions:
+  - "@StatusCode == 200"
+  tags: null
+  severity: "Minor"
+  database: null
+  inactive: false
+  matches: []
+  authors: "jaleel"
+  abacResources: null
+- type: "sla"
+  assertions:
+  - "@StatusCode == 200"
+  - "@StatusCode != 404"
+  tags: null
+  severity: "Major"
+  database: null
+  inactive: false
+  matches:
+  - name: null
+    value: "1000"
+    methods: "Get, GET, GET, GET, GET"
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: "/**, GET:/api/v1/runs/{id}, GET:/api/v1/notifications, GET:/api/v1/skills,\
+      \ GET:/api/v1/test-suites/project-id/{id}/coverage"
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  authors: null
+  abacResources: null
+- type: "anonymous_invalid"
+  assertions:
+  - "@StatusCode != 200"
+  tags: null
+  severity: "Critical"
+  database: null
+  inactive: false
+  matches:
+  - name: null
+    value: null
+    methods: "GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET"
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: "Get:/api/v1/user-signup/**, GET:/api/v1/bot-clusters, GET:/api/v1/bot-clusters/{id},\
+      \ GET:/api/v1/dashboard/issuetracker/{id}/issuetracker-savings, GET:/api/v1/orgs/{id},\
+      \ GET:/api/v1/bot-clusters, GET:/api/v1/bot-clusters, GET:/api/v1/accounts/{id},\
+      \ GET:/api/v1/accounts, GET:/api/v1/accounts/{id}, GET:/api/v1/bot-clusters,\
+      \ GET:/api/v1/dashboard/count-bytes, GET:/api/v1/dashboard/count-bytes, GET:/api/v1/accounts,\
+      \ GET:/api/v1/accounts/search, GET:/api/v1/accounts/search"
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  authors: null
+  abacResources: null
+- type: "auth_invalid"
+  assertions:
+  - "@StatusCode != 200"
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches:
+  - name: null
+    value: null
+    methods: null
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: "Get:/api/v1/user-signup/**"
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  authors: "jaleel"
+  abacResources: null
+- type: "auth_invalid_empty"
+  assertions:
+  - "@StatusCode == 401 OR @StatusCode == 403"
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches:
+  - name: null
+    value: null
+    methods: null
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: ""
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  authors: "jaleel"
+  abacResources: null
+- type: "auth_invalid_sql"
+  assertions:
+  - "@StatusCode == 401 OR @StatusCode == 403"
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches:
+  - name: null
+    value: null
+    methods: null
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: ""
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  authors: null
+  abacResources: null
 - type: "rbac"
   assertions:
   - "@StatusCode == 403"
-  tags:
-  - "OWASP - OTG-IDENT-001 "
-  - "FX Top 10 - API Vulnerability"
+  tags: null
   severity: null
   database: null
   inactive: false
   matches:
   - name: "Admin access"
-    value: null
+    value: "None"
     methods: "Post, Put, Delete, DELETE"
     denyRoles: "Writer, Reader"
     allowRoles: null
@@ -49,94 +159,34 @@ generators:
     queryParams: null
     bodyProperties: null
   authors: null
-- type: "no_params"
+  abacResources: null
+- type: "abac"
   assertions:
-  - "@StatusCode == 200"
-  tags:
-  - " OWASP - OTG-CONFIG-006"
-  severity: "Minor"
-  database: null
-  inactive: false
-  matches: []
-  authors: "jaleel"
-- type: "sla"
-  assertions:
-  - "@StatusCode == 200"
-  - "@StatusCode != 404"
+  - "Create:@StatusCode == 200 OR @StatusCode == 201"
+  - "Disallowed:@StatusCode == 401 OR @StatusCode == 403"
   tags: null
   severity: "Major"
   database: null
-  inactive: false
-  matches:
-  - name: null
-    value: "1000"
-    methods: "Get, GET, GET, GET, GET"
-    denyRoles: null
-    allowRoles: null
-    pathPatterns: "/**, GET:/api/v1/runs/{id}, GET:/api/v1/notifications, GET:/api/v1/skills,\
-      \ GET:/api/v1/test-suites/project-id/{id}/coverage"
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
-  authors: null
-- type: "anonymous_invalid"
+  inactive: true
+  matches: []
+  authors: ""
+  abacResources: null
+- type: "abacpositive"
   assertions:
-  - "@StatusCode != 200"
-  tags:
-  - "OWASP - OTG-AUTHN-002"
-  - "FX Top 10 - API Vulnerability"
-  severity: "Critical"
+  - "Create:@StatusCode == 200 OR @StatusCode == 201"
+  - "Allowed:@StatusCode == 200 OR @StatusCode == 201"
+  tags: null
+  severity: "Major"
   database: null
-  inactive: false
-  matches:
-  - name: null
-    value: null
-    methods: "GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET, GET"
-    denyRoles: null
-    allowRoles: null
-    pathPatterns: "Get:/api/v1/user-signup/**, GET:/api/v1/bot-clusters, GET:/api/v1/bot-clusters/{id},\
-      \ GET:/api/v1/dashboard/issuetracker/{id}/issuetracker-savings, GET:/api/v1/orgs/{id},\
-      \ GET:/api/v1/bot-clusters, GET:/api/v1/bot-clusters, GET:/api/v1/accounts/{id},\
-      \ GET:/api/v1/accounts, GET:/api/v1/accounts/{id}, GET:/api/v1/bot-clusters,\
-      \ GET:/api/v1/dashboard/count-bytes, GET:/api/v1/dashboard/count-bytes, GET:/api/v1/accounts,\
-      \ GET:/api/v1/accounts/search, GET:/api/v1/accounts/search"
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
-  authors: null
-- type: "auth_invalid"
-  assertions:
-  - "@StatusCode != 200"
-  tags:
-  - "OWASP A2"
-  - "OWASP A5"
-  - "OWASP A6"
-  - "OWASP A7"
-  - "[PIC DSS 3.0] 6.5.8"
-  - "[PIC DSS 3.0] 6.5.10"
-  - "OTG-AUTHN-004"
-  - "FX Top 10 - API Vulnerability"
-  severity: null
-  database: null
-  inactive: false
-  matches:
-  - name: null
-    value: null
-    methods: null
-    denyRoles: null
-    allowRoles: null
-    pathPatterns: "Get:/api/v1/user-signup/**"
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
-  authors: "jaleel"
+  inactive: true
+  matches: null
+  authors: ""
+  abacResources: null
 - type: "DDOS"
   assertions:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
-  tags:
-  - "[PCI DSS 3.0] 6.5.2"
-  - "FX Top 10 - API Vulnerability"
+  tags: null
   severity: "Major"
   database: null
   inactive: false
@@ -151,82 +201,108 @@ generators:
     queryParams: null
     bodyProperties: null
   authors: "jaleel"
+  abacResources: null
 - type: "XSS_Injection"
   assertions:
   - "@StatusCode != 200"
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
-  tags:
-  - "OWASP A3"
-  - "[PIC DSS 3.0] 6.5.7"
-  - "OWASP - OTG-INPVAL-001"
-  - "OWASP - OTG-INPVAL-002"
-  - "FX Top 10 - API Vulnerability"
+  tags: null
   severity: null
   database: null
   inactive: false
   matches: []
   authors: "jaleel"
-- type: "auth_invalid_empty"
+  abacResources: null
+- type: "sql_injection_timebound"
   assertions:
-  - "@StatusCode == 401 OR @StatusCode == 403"
-  tags:
-  - "OWASP A2"
-  - "OWASP A5"
-  - "OWASP A6"
-  - "OWASP A7"
-  - "[PIC DSS 3.0] 6.5.8"
-  - "[PIC DSS 3.0] 6.5.10"
-  - "OTG-AUTHN-004"
-  - "FX Top 10 - API Vulnerability"
+  - "@ResponseTime > 7000"
+  - "@ResponseTime < 10000"
+  - "@StatusCode != 404"
+  tags: null
   severity: null
-  database: null
+  database:
+    name: "MySQL"
+    version: "5.7"
   inactive: false
-  matches:
-  - name: null
-    value: null
-    methods: null
-    denyRoles: null
-    allowRoles: null
-    pathPatterns: ""
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
-  authors: "jaleel"
-- type: "auth_invalid_sql"
-  assertions:
-  - "@StatusCode == 401 OR @StatusCode == 403"
-  tags:
-  - "OWASP A1"
-  - "[PCI DSS 3.0] 6.5.1"
-  - "OTG-AUTHN-004"
-  - "FX Top 10 - API Vulnerability"
-  severity: null
-  database: null
-  inactive: false
-  matches:
-  - name: null
-    value: null
-    methods: null
-    denyRoles: null
-    allowRoles: null
-    pathPatterns: ""
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
+  matches: []
   authors: null
-- type: "abac"
+  abacResources: null
+- type: "log_Forging"
   assertions:
-  - "Create:@StatusCode == 200 OR @StatusCode == 201"
-  - "Disallowed:@StatusCode == 401 OR @StatusCode == 403"
-  tags:
-  - "FX Top 10 - API Vulnerability"
-  severity: "Major"
+  - "@StatusCode != 200"
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  - "@StatusCode != 500"
+  tags: null
+  severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
-  authors: ""
+  authors: null
+  abacResources: null
+- type: "invalid_datatype"
+  assertions:
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches: []
+  authors: null
+  abacResources: null
+- type: "special_chars "
+  assertions:
+  - "@StatusCode != 200"
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  - "@StatusCode != 500"
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches: []
+  authors: null
+  abacResources: null
+- type: "null_value"
+  assertions:
+  - "@StatusCode != 200"
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  - "@StatusCode != 500"
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches: []
+  authors: null
+  abacResources: null
+- type: "empty_value"
+  assertions:
+  - "@StatusCode != 200"
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  - "@StatusCode != 500"
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches: []
+  authors: null
+  abacResources: null
+- type: "negative_number"
+  assertions:
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  tags: null
+  severity: null
+  database: null
+  inactive: false
+  matches: []
+  authors: null
+  abacResources: null
 - type: "customize"
   assertions: []
   tags: null
@@ -245,93 +321,4 @@ generators:
     queryParams: null
     bodyProperties: null
   authors: ""
-- type: "sql_injection_timebound"
-  assertions:
-  - "@ResponseTime > 7000"
-  - "@ResponseTime < 10000"
-  - "@StatusCode != 404"
-  tags:
-  - "OWASP A1"
-  - "[PCI DSS 3.0] 6.5.1"
-  - "OWASP - OTG-INPVAL-005"
-  - "FX Top 10 - API Vulnerability"
-  severity: null
-  database:
-    name: "MySQL"
-    version: "5.7"
-  inactive: false
-  matches: []
-  authors: null
-- type: "log_Forging"
-  assertions:
-  - "@StatusCode != 200"
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  - "@StatusCode != 500"
-  tags:
-  - "OWASP - Log Injection"
-  severity: null
-  database: null
-  inactive: false
-  matches: []
-  authors: null
-- type: "invalid_datatype"
-  assertions:
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
-  severity: null
-  database: null
-  inactive: false
-  matches: []
-  authors: null
-- type: "special_chars "
-  assertions:
-  - "@StatusCode != 200"
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  - "@StatusCode != 500"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
-  severity: null
-  database: null
-  inactive: false
-  matches: []
-  authors: null
-- type: "null_value"
-  assertions:
-  - "@StatusCode != 200"
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  - "@StatusCode != 500"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
-  severity: null
-  database: null
-  inactive: false
-  matches: []
-  authors: null
-- type: "empty_value"
-  assertions:
-  - "@StatusCode != 200"
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  - "@StatusCode != 500"
-  tags: null
-  severity: null
-  database: null
-  inactive: false
-  matches: []
-  authors: null
-- type: "negative_number"
-  assertions:
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  tags:
-  - "OWASP - OTG-BUSLOGIC-001"
-  severity: null
-  database: null
-  inactive: false
-  matches: []
-  authors: null
+  abacResources: null
