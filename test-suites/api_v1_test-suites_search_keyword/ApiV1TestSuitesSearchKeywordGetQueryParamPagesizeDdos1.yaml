@@ -16,8 +16,8 @@ headers:
 - "Content-Type: application/json"
 testCases: []
 assertions:
-- "@StatusCode != 404"
-- "@StatusCode != 401"
+- "@StatusCode == 404"
+- "@StatusCode == 401"
 cleanup: []
 severity: "Major"
 category: "DDOS"
