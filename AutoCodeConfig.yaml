@@ -8,7 +8,7 @@ generators:
   tags: null
   severity: "Minor"
   database: null
-  inactive: false
+  inactive: true
   matches: []
   authors: "jaleel"
   abacResources: null
@@ -19,7 +19,7 @@ generators:
   tags: null
   severity: "Major"
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: "1000"
@@ -39,7 +39,7 @@ generators:
   tags: null
   severity: "Critical"
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -63,7 +63,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -82,7 +82,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -101,7 +101,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -120,7 +120,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: "Admin access"
     value: "None"
@@ -179,7 +179,7 @@ generators:
   severity: "Major"
   database: null
   inactive: true
-  matches: null
+  matches: []
   authors: ""
   abacResources: null
 - type: "DDOS"
@@ -211,7 +211,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
   authors: "jaleel"
   abacResources: null
@@ -225,7 +225,7 @@ generators:
   database:
     name: "MySQL"
     version: "5.7"
-  inactive: false
+  inactive: true
   matches: []
   authors: null
   abacResources: null
@@ -238,7 +238,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
   authors: null
   abacResources: null
@@ -249,7 +249,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
   authors: null
   abacResources: null
@@ -262,7 +262,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
   authors: null
   abacResources: null
@@ -275,7 +275,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
   authors: null
   abacResources: null
@@ -288,7 +288,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
   authors: null
   abacResources: null
@@ -299,7 +299,7 @@ generators:
   tags: null
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
   authors: null
   abacResources: null
